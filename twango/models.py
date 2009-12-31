@@ -1,5 +1,10 @@
 from django.db import models
+from django.contrib.auth.models import User as DjangoUser
 
+
+"""
+Abstract models to be extended by other apps.
+"""
 
 class UserProfile(models.Model):
     """Twitter user profile infomation"""
@@ -54,4 +59,22 @@ class Status(models.Model):
     in_reply_to_status_id = models.PositiveIntegerField()
     in_reply_to_user_id = models.PositiveIntegerField()
     in_reply_to_screen_name = models.CharField(max_length=15)
+
+
+"""
+Twango models used internally and may also be used by others.
+"""
+
+class UserCredentials(models.Model):
+    """Twitter user authentication credentials."""
+
+    user = models.ForeignKey(DjangoUser)
+
+    # Basic
+    username = models.CharField(max_length=15, null=True)
+    password = models.CharField(max_length=50, null=True)
+
+    # OAuth
+    oauth_token = models.CharField(max_length=30, null=True)
+    oauth_secret = models.CharField(max_length=30, null=True)
 
