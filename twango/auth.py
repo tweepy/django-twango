@@ -1,5 +1,6 @@
 from tweepy import BasicAuthHandler, OAuthHandler
 from twango.settings import get_setting
+from twango.models import UserCredentials
 
 
 def get_consumer_creds():
@@ -26,6 +27,27 @@ def get_site_auth():
         auth.set_access_token(oauth_token, oauth_secret)
         return auth
 
-    # If no authentication provided, return unauthenticated API
-    return API()
+
+def get_user_auth(user):
+    """Return auth handler for user API object"""
+
+    if user.is_authenticated() is False:
+        return
+
+    # Fetch the user's twitter credentials from DB
+    try:
+        creds = UserCredentials.objects.get(user=user)
+    except UserCredentials.DoesNotExist:
+        return
+
+    # Do we have basic credentials?
+    if creds.username and creds.password:
+        return BasicAuthHandler(creds.username, creds.password)
+
+    # How about OAuth?
+    consumer_creds = get_consumer_creds()
+    if consumer_creds and creds.oauth_token and creds.oauth_secret:
+        auth = OAuthHandler(*consumer_creds)
+        auth.set_access_token(creds.oauth_token, creds.oauth_secret)
+        return auth
 
