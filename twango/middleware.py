@@ -16,3 +16,12 @@ class TwitterMiddleware(object):
         if hasattr(request, 'user'):
             request.user.twitter = API(get_user_auth(request.user))
 
+    def process_view(self, request, view_func, view_args, view_kargs):
+        """
+        Make sure user authorized the site on twitter
+        if required by this view. If we are not authorized
+        direct user to authorization URL.
+        """
+        # TODO: implement
+            
+
