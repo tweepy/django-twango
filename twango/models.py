@@ -38,3 +38,20 @@ class User(models.Model):
     statuses_count = models.PositiveIntegerField()
     verified = models.BooleanField()
 
+
+class Status(models.Model):
+    """Twitter status"""
+
+    class Meta:
+        abstract = True
+
+    twitter_id = models.PositiveIntegerField()
+    text = models.CharField(max_length=140)
+    created_at = models.DateTimeField()
+    source = models.CharField(max_length=40)
+    source_url = models.URLField(verify_exists=False)
+    truncated = models.BooleanField()
+    in_reply_to_status_id = models.PositiveIntegerField()
+    in_reply_to_user_id = models.PositiveIntegerField()
+    in_reply_to_screen_name = models.CharField(max_length=15)
+
