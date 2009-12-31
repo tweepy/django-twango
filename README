@@ -4,8 +4,8 @@ A Django application for the Tweepy Twitter library.
 
 Author: Joshua Roesslein
 License: MIT
-Code: http://github.com/joshthecoder/django-tweepy
+Code: http://github.com/joshthecoder/django-twango
 Dependencies:
     + Python 2.4/2.5/2.6
-    + Tweepy 1.4
+    + Tweepy 1.4 (http://github.com/joshthecoder/tweepy)
     + Django 1.1
