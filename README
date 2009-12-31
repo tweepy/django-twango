@@ -1,10 +1,15 @@
 Twango
 ======
-A Django application for the Tweepy Twitter library.
+Twitter API integration for Django!
 
 Author: Joshua Roesslein
 License: MIT
 Code: http://github.com/joshthecoder/django-twango
+Support:
+    Chat - IRC @freenode.net #tweepy
+           Web client http://webchat.freenode.net/?channels=tweepy
+    Mailing list - http://groups.google.com/group/tweepy (tweepy@googlegroups.com)
+    Issue tracker - http://github.com/joshthecoder/django-twango/issues
 Dependencies:
     + Python 2.4/2.5/2.6
     + Tweepy 1.4 (http://github.com/joshthecoder/tweepy)
