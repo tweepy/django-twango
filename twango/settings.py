@@ -16,7 +16,7 @@ defaults = dict(
     TWITTER_SITE_OAUTHSECRET = '',
 
     # OAuth consumer credentials
-    TWITTER_CONSUMER_TOKEN = '123',
+    TWITTER_CONSUMER_TOKEN = '',
     TWITTER_CONSUMER_SECRET = '',
 
 )
