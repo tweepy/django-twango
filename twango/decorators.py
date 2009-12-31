@@ -1,4 +1,4 @@
-def authorization_required(view_func):
+def twitter_auth_required(view_func):
     """
     Decorator for views that requires the authenicated
     user to have authorized the site on Twitter. If no
@@ -6,6 +6,6 @@ def authorization_required(view_func):
     a page to authorize the site.
     """
 
-    view_func.authorization_required = True
+    view_func.twitter_auth_required = True
     return view_func
 

@@ -1,5 +1,8 @@
 from tweepy import API
 from twango.auth import get_site_auth, get_user_auth
+from twango.settings import get_setting
+from django.shortcuts import redirect
+from django.core.exceptions import ImproperlyConfigured
 
 
 class TwitterMiddleware(object):
@@ -18,10 +21,18 @@ class TwitterMiddleware(object):
 
     def process_view(self, request, view_func, view_args, view_kargs):
         """
-        Make sure user authorized the site on twitter
-        if required by this view. If we are not authorized
-        direct user to authorization URL.
+        If this view requires twitter authorization,
+        make sure this user has granted it. If not redirect
+        to the twitter authorization URL.
         """
-        # TODO: implement
-            
+        if hasattr(view_func, 'twitter_auth_required') and \
+                view_func.twitter_auth_required:
+            # Make sure AuthenticationMiddlware is installed
+            if not hasattr(request, 'user'):
+                raise ImproperlyConfigured(
+                    "TwitterMiddlware requires AuthenticationMiddleware "
+                    "in order to enforce the twitter_auth_required decorator.")
+
+            if request.user.twitter.auth is None:
+                return redirect(get_setting('TWITTER_AUTH_URL'))
 

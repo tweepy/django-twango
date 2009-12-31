@@ -19,6 +19,8 @@ defaults = dict(
     TWITTER_CONSUMER_TOKEN = '',
     TWITTER_CONSUMER_SECRET = '',
 
+    TWITTER_AUTH_URL = '/twitter/authorize',
+
 )
 
 
