@@ -1,10 +1,11 @@
-Django Tweepy
-=============
+Twango
+======
 A Django application for the Tweepy Twitter library.
 
 Author: Joshua Roesslein
 License: MIT
 Code: http://github.com/joshthecoder/django-tweepy
 Dependencies:
-    + Python 2.4+
+    + Python 2.4/2.5/2.6
+    + Tweepy 1.4
     + Django 1.1
