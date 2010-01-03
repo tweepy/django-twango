@@ -61,6 +61,23 @@ class Status(models.Model):
     in_reply_to_screen_name = models.CharField(max_length=15)
 
 
+class SearchResult(models.Model):
+    """Search result"""
+
+    class Meta:
+        abstract = True
+
+    status_id = models.PositiveIntegerField()
+    text = models.CharField(max_length=140)
+    to_user = models.CharField(max_length=15)
+    from_user = models.CharField(max_length=15)
+    iso_language_code = models.CharField(max_length=3)
+    source = models.CharField(max_length=40)
+    source_url = models.URLField(verify_exists=False)
+    created_at = models.DateTimeField()
+    profile_image_url = models.URLField(verify_exists=False)
+
+
 """
 Twango models used internally and may also be used by others.
 """
