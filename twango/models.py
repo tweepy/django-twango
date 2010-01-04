@@ -28,7 +28,7 @@ class User(models.Model):
     class Meta:
         abstract = True
 
-    twitter_id = models.PositiveIntegerField()
+    id = models.PositiveIntegerField(primary_key=True)
     name = models.CharField(max_length=20)
     screen_name = models.CharField(max_length=15)
     location = models.CharField(max_length=30)
@@ -50,7 +50,7 @@ class Status(models.Model):
     class Meta:
         abstract = True
 
-    twitter_id = models.PositiveIntegerField()
+    id = models.PositiveIntegerField(primary_key=True)
     text = models.CharField(max_length=140)
     created_at = models.DateTimeField()
     source = models.CharField(max_length=40)
@@ -67,7 +67,7 @@ class SearchResult(models.Model):
     class Meta:
         abstract = True
 
-    status_id = models.PositiveIntegerField()
+    id = models.PositiveIntegerField(primary_key=True)
     text = models.CharField(max_length=140)
     to_user = models.CharField(max_length=15)
     from_user = models.CharField(max_length=15)
